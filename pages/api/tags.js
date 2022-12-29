@@ -1,5 +1,5 @@
-import { dbConnect } from '../../recruit-next/utils/mongoose'
-import Tag from '../../recruit-next/models/tags'
+import { dbConnect } from '../../../recruit-next/utils/mongoose'
+import Tag from '../../../recruit-next/models/tags'
 
 dbConnect()
 
