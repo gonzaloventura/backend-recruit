@@ -1,10 +1,18 @@
 import { dbConnect } from '../../../utils/mongoose'
 import Job from '../../../models/jobs'
+import NextCors from 'nextjs-cors';
+
 
 dbConnect();
 
 export default async (req, res) => {
   const { method, body } = req;
+  
+  await NextCors(req, res, {
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    origin: '*',
+    optionsSuccessStatus: 200,
+ });
 
   switch (method) {
     case "GET":
