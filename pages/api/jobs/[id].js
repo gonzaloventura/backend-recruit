@@ -32,6 +32,7 @@ export default async function tasksHandler(req, res) {
         const job = await Job.findByIdAndUpdate(id, body, {
           new: true,
           runValidators: true,
+          headers: {'Access-Control-Allow-Origin': '*'}
         });
         if (!job) return res.status(404).json({ msg: "Task does not exists" });
         return res.status(200).json(job);
