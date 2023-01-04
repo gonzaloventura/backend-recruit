@@ -25,8 +25,7 @@ const jobSchema = new Schema({
         default: true
     },
     url_cv: {
-        type: String,
-        required: [true, 'CV is required']
+        type: String
     }
 })
 
