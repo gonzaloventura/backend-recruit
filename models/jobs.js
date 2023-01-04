@@ -23,9 +23,6 @@ const jobSchema = new Schema({
     estado: {
         type: Boolean,
         default: true
-    },
-    url_cv: {
-        type: String
     }
 })
 
