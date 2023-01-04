@@ -3,7 +3,7 @@ import { Schema, model, models } from 'mongoose'
 const jobSchema = new Schema({
     title: {
         type: String,
-        required: [true, 'Ttitle is required'],
+        required: [true, 'Title is required'],
         trim: true
     },
     description: {
@@ -23,7 +23,9 @@ const jobSchema = new Schema({
     estado: {
         type: Boolean,
         default: true
-    }
+    },
+    url_cv: String,
+    id_cv: String
 })
 
 export default models.Job || model('Job', jobSchema)
