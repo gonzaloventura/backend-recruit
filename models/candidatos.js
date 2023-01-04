@@ -25,7 +25,19 @@ const candidatosSchema = new Schema({
         default: true
     },
     job_id: {
-        type: String
+        type: Array
+    },
+    url_cv: {
+        type: String,
+        default: null
+    },
+    puntuacion: {
+        type: Number,
+        default: 0
+    },
+    etapa: {
+        type: String,
+        default: "Nuevo"
     }
 })
 
