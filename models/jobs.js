@@ -24,13 +24,9 @@ const jobSchema = new Schema({
         type: Boolean,
         default: true
     },
-    postulaciones: {
-        type: Number,
-        default: 0
-    },
-    postulados: {
-        type: Array,
-        default: {}
+    url_cv: {
+        type: String,
+        required: [true, 'CV is required']
     }
 })
 
