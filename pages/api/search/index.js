@@ -2,27 +2,60 @@ import { dbConnect } from '../../../utils/mongoose'
 import Job from '../../../models/jobs'
 import NextCors from 'nextjs-cors';
 
-
 dbConnect();
 
-export default async (req, res) => {
-  const { method, body } = req;
-  
+export default async function tasksHandler(req, res) {
+  const {
+    method,
+    query: { search },
+    body: {
+      value,
+      location,
+      estado,
+      limit,
+      page
+    },
+  } = req;
+
   await NextCors(req, res, {
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     origin: '*',
     optionsSuccessStatus: 200,
- });
+  });
+
+  let query = {};
+
+    if (req.query.title) {
+        query.title = {$regex: req.query.title, $options: 'i' };
+    }
+    if (req.query.location) {
+        query.location = req.query.location;
+    }
+
+    if (req.query.estado) {
+        query.estado = req.query.estado;
+    }
+
+    if (req.query.limit) {
+        query.limit = req.query.limit;
+    }
+
+    if (req.query.page) {
+        query.page = req.query.page;
+    }
+
+console.log(query)
 
   switch (method) {
     case "GET":
       try {
-        const jobs = await Job.find();
-        return res.status(200).json(jobs);
+        const job = await Job.find(query);
+        if (!job) return res.status(404).json({ msg: "Task does not exists" });
+        return res.status(200).json(job);
       } catch (error) {
         return res.status(400).json({ msg: error.message });
       }
     default:
       return res.status(400).json({ msg: "This method is not supported" });
   }
-};
+}
