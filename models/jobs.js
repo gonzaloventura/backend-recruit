@@ -25,7 +25,11 @@ const jobSchema = new Schema({
         default: true
     },
     url_cv: String,
-    id_cv: String
+    id_cv: String,
+    modalidad: {
+        type: String,
+        required: [true, 'Se requiere modalidad']
+    }
 })
 
 export default models.Job || model('Job', jobSchema)
