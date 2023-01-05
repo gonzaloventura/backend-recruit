@@ -25,7 +25,7 @@ const candidatosSchema = new Schema({
         default: true
     },
     job_id: {
-        type: Array
+        type: String
     },
     url_cv: {
         type: String,
