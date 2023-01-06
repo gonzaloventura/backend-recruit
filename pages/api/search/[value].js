@@ -11,6 +11,7 @@ export default async function tasksHandler(req, res) {
     body: {
       value,
       location,
+      category,
       estado,
       limit,
       page
@@ -25,24 +26,29 @@ export default async function tasksHandler(req, res) {
 
   const query = {};
 
-    if (req.query.value) {
-        query.value = { $regex: req.query.value, $options: 'i' };
-    }
-    if (req.query.location) {
-        query.location = req.query.location;
-    }
+  if (req.query.value) {
+    query.value = { $regex: req.query.value, $options: 'i' };
+  }
+  
+  if (req.query.location) {
+    query.location = req.query.location;
+  }
 
-    if (req.query.estado) {
-        query.estado = req.query.estado;
-    }
+  if (req.query.category) {
+    query.category = req.query.category;
+  }
 
-    if (req.query.limit) {
-        query.limit = req.query.limit;
-    }
+  if (req.query.estado) {
+    query.estado = req.query.estado;
+  }
 
-    if (req.query.page) {
-        query.page = req.query.page;
-    }
+  if (req.query.limit) {
+    query.limit = req.query.limit;
+  }
+
+  if (req.query.page) {
+    query.page = req.query.page;
+  }
 
 
   switch (method) {
