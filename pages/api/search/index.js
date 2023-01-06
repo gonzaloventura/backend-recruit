@@ -11,6 +11,7 @@ export default async function tasksHandler(req, res) {
     body: {
       value,
       location,
+      category,
       estado,
       limit,
       page
@@ -30,6 +31,10 @@ export default async function tasksHandler(req, res) {
     }
     if (req.query.location) {
         query.location = req.query.location;
+    }
+
+    if (req.query.category) {
+      query.category = { $regex: req.query.category, $options: 'i' };
     }
 
     if (req.query.estado) {
