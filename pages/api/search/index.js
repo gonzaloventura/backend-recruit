@@ -14,7 +14,8 @@ export default async function tasksHandler(req, res) {
       category,
       estado,
       limit,
-      page
+      page,
+      modalidad
     },
   } = req;
 
@@ -49,7 +50,9 @@ export default async function tasksHandler(req, res) {
         query.page = req.query.page;
     }
 
-console.log(query)
+    if (req.query.modalidad) {
+      query.modalidad = {$regex: req.query.modalidad, $options: 'i' };
+  }
 
   switch (method) {
     case "GET":
