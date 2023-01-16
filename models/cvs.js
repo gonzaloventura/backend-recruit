@@ -70,6 +70,10 @@ const curriculumVitae = new Schema({
     url_cv: {
         type: String,
         default: null
+    },
+    user_id: {
+        type: String,
+        required: [true, 'user_id is required']
     }
 })
 
