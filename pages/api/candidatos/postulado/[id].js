@@ -13,7 +13,7 @@ export default async function tasksHandler(req, res) {
   switch (method) {
     case "GET":
       try {
-        const candidato = await Candidato.find({job_id: id});
+        const candidato = await Candidato.find(id);
         if (!candidato) return res.status(404).json({ msg: "Task does not exists" });
         return res.status(200).json(candidato);
       } catch (error) {
@@ -27,6 +27,15 @@ export default async function tasksHandler(req, res) {
         });
         if (!candidato) return res.status(404).json({ msg: "Task does not exists" });
         return res.status(200).json(candidato);
+      } catch (error) {
+        return res.status(400).json({ msg: error.message });
+      }
+    case "DELETE":
+      try {
+        const deletedTask = await Candidato.findByIdAndDelete(id);
+        if (!deletedTask)
+          return res.status(404).json({ msg: "Task does not exists" });
+        return res.status(204).json();
       } catch (error) {
         return res.status(400).json({ msg: error.message });
       }
