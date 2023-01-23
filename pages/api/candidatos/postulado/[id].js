@@ -13,7 +13,7 @@ export default async function tasksHandler(req, res) {
   switch (method) {
     case "GET":
       try {
-        const candidato = await Candidato.find(id);
+        const candidato = await Candidato.find({_id: id});
         if (!candidato) return res.status(404).json({ msg: "Task does not exists" });
         return res.status(200).json(candidato);
       } catch (error) {
