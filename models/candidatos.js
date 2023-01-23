@@ -35,7 +35,7 @@ const candidatosSchema = new Schema({
         type: String,
         default: "Nuevo"
     },
-    destacado: {
+    destacar: {
         type: Boolean,
         default: false
     },
