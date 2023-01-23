@@ -1,5 +1,5 @@
-import { dbConnect } from '../../../utils/mongoose'
-import Candidato from '../../../models/candidatos'
+import { dbConnect } from '../../../../utils/mongoose'
+import Candidato from '../../../../models/candidatos'
 
 dbConnect();
 
