@@ -22,7 +22,7 @@ export default async function tasksHandler(req, res) {
     case "PUT":
       try {
         const candidato = await Candidato.findByIdAndUpdate(id, body, {
-          new: true,
+          new: true,  
           runValidators: true,
         });
         if (!candidato) return res.status(404).json({ msg: "Task does not exists" });

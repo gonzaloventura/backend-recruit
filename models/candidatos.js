@@ -35,6 +35,10 @@ const candidatosSchema = new Schema({
         type: String,
         default: "Nuevo"
     },
+    destacado: {
+        type: Boolean,
+        default: false
+    },
     url_cv: {
         type: String,
         default: null
